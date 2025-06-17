@@ -1,102 +1,230 @@
 
-import React from 'react';
-import { Code, Palette, Smartphone, Database, Cloud, Zap } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Code, Database, Globe, Server, GitBranch, Brain } from 'lucide-react';
 
 const Skills = () => {
-  const skillCategories = [
+  const [hoveredPlanet, setHoveredPlanet] = useState<string | null>(null);
+
+  const skillPlanets = [
     {
+      id: 'languages',
+      name: 'Programming Languages',
       icon: Code,
-      title: 'Frontend Development',
-      skills: ['React', 'TypeScript', 'Next.js', 'Vue.js', 'Tailwind CSS', 'SASS'],
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-orange-500 to-red-500',
+      size: 'w-20 h-20',
+      orbitRadius: '200px',
+      animationDuration: '20s',
+      skills: ['Java', 'JavaScript', 'TypeScript', 'Python', 'HTML', 'CSS', 'SQL'],
+      position: 0
     },
     {
+      id: 'frameworks',
+      name: 'Frameworks & Libraries',
+      icon: Globe,
+      color: 'from-blue-500 to-cyan-500',
+      size: 'w-16 h-16',
+      orbitRadius: '160px',
+      animationDuration: '15s',
+      skills: ['Next.js', 'React.js', 'Flask', 'OpenCV'],
+      position: 1
+    },
+    {
+      id: 'backend',
+      name: 'Backend Development',
+      icon: Server,
+      color: 'from-green-500 to-emerald-500',
+      size: 'w-14 h-14',
+      orbitRadius: '120px',
+      animationDuration: '12s',
+      skills: ['Node.js', 'Express.js'],
+      position: 2
+    },
+    {
+      id: 'databases',
+      name: 'Databases',
       icon: Database,
-      title: 'Backend Development',
-      skills: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB', 'REST APIs', 'GraphQL'],
-      color: 'from-green-500 to-emerald-500'
+      color: 'from-purple-500 to-pink-500',
+      size: 'w-12 h-12',
+      orbitRadius: '280px',
+      animationDuration: '25s',
+      skills: ['MySQL', 'MongoDB', 'SupaBase', 'Firebase'],
+      position: 3
     },
     {
-      icon: Palette,
-      title: 'UI/UX Design',
-      skills: ['Figma', 'Adobe XD', 'Sketch', 'Prototyping', 'User Research', 'Design Systems'],
-      color: 'from-purple-500 to-pink-500'
+      id: 'version-control',
+      name: 'Version Control',
+      icon: GitBranch,
+      color: 'from-indigo-500 to-blue-500',
+      size: 'w-10 h-10',
+      orbitRadius: '240px',
+      animationDuration: '18s',
+      skills: ['Git', 'GitHub'],
+      position: 4
     },
     {
-      icon: Smartphone,
-      title: 'Mobile Development',
-      skills: ['React Native', 'Flutter', 'iOS', 'Android', 'PWA', 'Cross-platform'],
-      color: 'from-orange-500 to-red-500'
-    },
-    {
-      icon: Cloud,
-      title: 'Cloud & DevOps',
-      skills: ['AWS', 'Docker', 'Kubernetes', 'CI/CD', 'Jenkins', 'Terraform'],
-      color: 'from-indigo-500 to-blue-500'
-    },
-    {
-      icon: Zap,
-      title: 'Tools & Others',
-      skills: ['Git', 'Webpack', 'Jest', 'Storybook', 'Analytics', 'Performance'],
-      color: 'from-yellow-500 to-orange-500'
+      id: 'cs-concepts',
+      name: 'Computer Science',
+      icon: Brain,
+      color: 'from-yellow-500 to-orange-500',
+      size: 'w-18 h-18',
+      orbitRadius: '320px',
+      animationDuration: '30s',
+      skills: ['OOP', 'Data Structures', 'Algorithms', 'Linux (Debian)'],
+      position: 5
     }
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gradient-to-br from-slate-800 via-slate-900 to-purple-900 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-40 h-40 bg-blue-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-60 h-60 bg-purple-500 rounded-full blur-3xl"></div>
+    <section id="skills" className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-black relative overflow-hidden min-h-screen">
+      {/* Starfield background */}
+      <div className="absolute inset-0">
+        {[...Array(200)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-white rounded-full opacity-60 animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${2 + Math.random() * 4}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Nebula effects */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-10 left-10 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-blue-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/4 w-60 h-60 bg-cyan-400 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-            Skills & Expertise
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+            Full Stack Solar System
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            A comprehensive toolkit spanning frontend, backend, design, and emerging technologies
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Navigate through my technology universe where each skill orbits in perfect harmony
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
+        {/* Solar System Container */}
+        <div className="relative flex items-center justify-center min-h-[800px]">
+          {/* Central Sun - Full Stack Developer */}
+          <div className="absolute z-20 w-32 h-32 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
+            <div className="text-center">
+              <div className="text-lg font-bold text-white mb-1">Full Stack</div>
+              <div className="text-sm text-white">Developer</div>
+            </div>
+            {/* Sun rays */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 animate-ping opacity-20"></div>
+          </div>
+
+          {/* Orbital paths */}
+          {skillPlanets.map((planet) => (
             <div
-              key={category.title}
-              className="group relative p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-500 hover:transform hover:scale-105 hover:-rotate-1"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              key={planet.id}
+              className="absolute border border-white/10 rounded-full"
+              style={{
+                width: `calc(${planet.orbitRadius} * 2)`,
+                height: `calc(${planet.orbitRadius} * 2)`,
+              }}
+            />
+          ))}
+
+          {/* Planets */}
+          {skillPlanets.map((planet) => (
+            <div
+              key={planet.id}
+              className="absolute animate-spin"
+              style={{
+                width: `calc(${planet.orbitRadius} * 2)`,
+                height: `calc(${planet.orbitRadius} * 2)`,
+                animationDuration: planet.animationDuration,
+                animationTimingFunction: 'linear',
+                animationIterationCount: 'infinite',
+              }}
             >
-              {/* Gradient overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500`}></div>
-              
-              <div className="relative z-10">
-                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300`}>
-                  <category.icon className="w-8 h-8 text-white" />
-                </div>
+              {/* Planet */}
+              <div
+                className={`absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${planet.size} bg-gradient-to-br ${planet.color} rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-125 shadow-lg`}
+                onMouseEnter={() => setHoveredPlanet(planet.id)}
+                onMouseLeave={() => setHoveredPlanet(null)}
+              >
+                <planet.icon className="w-6 h-6 text-white" />
                 
-                <h3 className="text-xl font-semibold text-white mb-4 text-center group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 group-hover:bg-clip-text transition-all duration-300">
-                  {category.title}
-                </h3>
-                
-                <div className="space-y-2">
-                  {category.skills.map((skill, skillIndex) => (
+                {/* Planet glow effect */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${planet.color} rounded-full animate-ping opacity-30`}></div>
+              </div>
+
+              {/* Skill moons orbiting each planet */}
+              {hoveredPlanet === planet.id && (
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  {planet.skills.map((skill, index) => (
                     <div
                       key={skill}
-                      className="px-3 py-2 bg-white/5 rounded-lg text-gray-300 text-sm border border-white/5 hover:border-white/20 hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
-                      style={{ animationDelay: `${(index * 0.1) + (skillIndex * 0.05)}s` }}
+                      className="absolute animate-spin bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-medium text-gray-800 shadow-lg"
+                      style={{
+                        top: `${Math.cos((index * 2 * Math.PI) / planet.skills.length) * 60 - 10}px`,
+                        left: `${Math.sin((index * 2 * Math.PI) / planet.skills.length) * 60 - 20}px`,
+                        animationDuration: '3s',
+                        animationDirection: 'reverse',
+                      }}
                     >
                       {skill}
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Floating elements */}
-              <div className="absolute -top-2 -right-2 w-4 h-4 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
-              <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              )}
             </div>
           ))}
+
+          {/* Planet info panel */}
+          {hoveredPlanet && (
+            <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-lg rounded-2xl p-6 max-w-xs animate-fade-in">
+              {(() => {
+                const planet = skillPlanets.find(p => p.id === hoveredPlanet);
+                return planet ? (
+                  <>
+                    <h3 className="text-xl font-bold text-white mb-3 flex items-center">
+                      <planet.icon className="w-6 h-6 mr-2" />
+                      {planet.name}
+                    </h3>
+                    <div className="space-y-2">
+                      {planet.skills.map((skill) => (
+                        <div key={skill} className="px-3 py-1 bg-white/20 rounded-full text-sm text-gray-200">
+                          {skill}
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                ) : null;
+              })()}
+            </div>
+          )}
+
+          {/* Asteroid belt */}
+          <div className="absolute inset-0 pointer-events-none">
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-1 bg-gray-400 rounded-full animate-pulse"
+                style={{
+                  left: `${30 + Math.random() * 40}%`,
+                  top: `${30 + Math.random() * 40}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Navigation hint */}
+        <div className="text-center mt-8">
+          <p className="text-gray-400 text-sm animate-bounce">
+            Hover over planets to explore their satellite technologies
+          </p>
         </div>
       </div>
     </section>
