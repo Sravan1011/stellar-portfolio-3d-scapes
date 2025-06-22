@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { ChevronDown, Github, Linkedin, Mail, Brain, Zap } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900/50 to-slate-800">
       {/* Neural Network Background */}
       <div className="absolute inset-0">
         {/* Neural Network Nodes */}
@@ -139,7 +138,7 @@ const Hero = () => {
         {[...Array(200)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-px h-px bg-white rounded-full animate-twinkle"
+            className="absolute w-px h-px bg-white/80 rounded-full animate-twinkle"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
