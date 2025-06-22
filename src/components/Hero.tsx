@@ -5,47 +5,132 @@ import { ChevronDown, Github, Linkedin, Mail, Brain, Zap } from 'lucide-react';
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Black Hole Animation */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        {/* Event Horizon */}
-        <div className="absolute w-96 h-96 rounded-full bg-gradient-radial from-transparent via-purple-900/20 to-black animate-spin-slow border border-purple-500/30">
-          <div className="absolute inset-4 rounded-full bg-gradient-radial from-transparent via-blue-900/30 to-transparent animate-spin" style={{ animationDuration: '20s', animationDirection: 'reverse' }}></div>
-        </div>
-        
-        {/* Accretion Disk */}
-        <div className="absolute w-[600px] h-[600px] rounded-full border-2 border-orange-500/40 animate-spin opacity-60" style={{ animationDuration: '30s' }}>
-          <div className="absolute top-0 left-1/2 w-2 h-2 bg-orange-400 rounded-full -translate-x-1/2 -translate-y-1 animate-pulse"></div>
-          <div className="absolute bottom-0 left-1/2 w-1 h-1 bg-yellow-400 rounded-full -translate-x-1/2 translate-y-1 animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute left-0 top-1/2 w-1.5 h-1.5 bg-red-400 rounded-full -translate-x-1 -translate-y-1/2 animate-pulse" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute right-0 top-1/2 w-1 h-1 bg-blue-400 rounded-full translate-x-1 -translate-y-1/2 animate-pulse" style={{ animationDelay: '3s' }}></div>
+      {/* Neural Network Background */}
+      <div className="absolute inset-0">
+        {/* Neural Network Nodes */}
+        <div className="absolute inset-0">
+          {[...Array(50)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${2 + Math.random() * 2}s`,
+              }}
+            />
+          ))}
         </div>
 
-        {/* Outer Rings */}
-        <div className="absolute w-[800px] h-[800px] rounded-full border border-cyan-500/20 animate-spin" style={{ animationDuration: '45s' }}></div>
-        <div className="absolute w-[1000px] h-[1000px] rounded-full border border-purple-500/10 animate-spin" style={{ animationDuration: '60s', animationDirection: 'reverse' }}></div>
-
-        {/* Gravitational Lensing Effect */}
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/50"></div>
-        
-        {/* Central Black Hole */}
-        <div className="absolute w-32 h-32 rounded-full bg-black border-4 border-purple-400/50 shadow-[0_0_50px_rgba(147,51,234,0.5)] animate-pulse">
-          <div className="absolute inset-2 rounded-full bg-gradient-radial from-purple-900/50 to-black"></div>
+        {/* Data Processing Streams */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-40"
+              style={{
+                left: '-100px',
+                top: `${10 + i * 12}%`,
+                width: '120%',
+                transform: `rotate(${-30 + i * 7}deg)`,
+                animation: `slide-data 4s linear infinite`,
+                animationDelay: `${i * 0.5}s`,
+              }}
+            />
+          ))}
         </div>
+
+        {/* Central AI Core */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="relative w-64 h-64 rounded-full border-2 border-purple-400/30 animate-spin-slow">
+            {/* Inner processing rings */}
+            <div className="absolute inset-8 rounded-full border border-blue-400/40 animate-spin" style={{ animationDuration: '20s', animationDirection: 'reverse' }}>
+              <div className="absolute inset-4 rounded-full border border-cyan-400/30 animate-spin" style={{ animationDuration: '15s' }}>
+                <div className="absolute inset-6 rounded-full bg-gradient-radial from-purple-500/20 via-blue-500/10 to-transparent">
+                  <div className="absolute top-1/2 left-1/2 w-8 h-8 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full animate-pulse shadow-[0_0_30px_rgba(147,51,234,0.6)]">
+                    <Brain className="w-4 h-4 text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Data Flow Particles */}
+        <div className="absolute inset-0">
+          {[...Array(30)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-70"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animation: `flow-data 6s linear infinite`,
+                animationDelay: `${Math.random() * 6}s`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* ML Algorithm Visualization */}
+        <div className="absolute top-20 right-20 opacity-30">
+          <div className="relative w-32 h-32">
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-3 h-3 bg-orange-400 rounded-full"
+                style={{
+                  left: `${50 + 40 * Math.cos((i * Math.PI * 2) / 8)}%`,
+                  top: `${50 + 40 * Math.sin((i * Math.PI * 2) / 8)}%`,
+                  animation: `pulse 2s ease-in-out infinite`,
+                  animationDelay: `${i * 0.25}s`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Neural Connections */}
+        <svg className="absolute inset-0 w-full h-full opacity-20">
+          {[...Array(20)].map((_, i) => (
+            <line
+              key={i}
+              x1={`${Math.random() * 100}%`}
+              y1={`${Math.random() * 100}%`}
+              x2={`${Math.random() * 100}%`}
+              y2={`${Math.random() * 100}%`}
+              stroke="url(#neural-gradient)"
+              strokeWidth="1"
+              className="animate-pulse"
+              style={{ animationDelay: `${Math.random() * 3}s` }}
+            />
+          ))}
+          <defs>
+            <linearGradient id="neural-gradient">
+              <stop offset="0%" stopColor="#8b5cf6" />
+              <stop offset="50%" stopColor="#3b82f6" />
+              <stop offset="100%" stopColor="#06b6d4" />
+            </linearGradient>
+          </defs>
+        </svg>
       </div>
 
-      {/* Floating Particles */}
+      {/* Floating ML Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(100)].map((_, i) => (
+        {['AI', 'ML', 'DL', 'NLP', 'CV', 'RL'].map((tech, i) => (
           <div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full opacity-40 animate-pulse"
+            key={tech}
+            className="absolute text-purple-400/20 font-bold text-lg animate-float"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${2 + Math.random() * 3}s`,
+              left: `${10 + i * 15}%`,
+              top: `${20 + (i % 2) * 60}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${3 + Math.random() * 2}s`,
             }}
-          />
+          >
+            {tech}
+          </div>
         ))}
       </div>
 
@@ -122,10 +207,10 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Gravitational Wave Effect */}
+      {/* ML Processing Waves */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2 border border-purple-500/20 rounded-full animate-ping" style={{ animationDuration: '4s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2 border border-blue-500/20 rounded-full animate-ping" style={{ animationDuration: '6s', animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2 border border-blue-500/20 rounded-full animate-ping" style={{ animationDuration: '4s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2 border border-purple-500/20 rounded-full animate-ping" style={{ animationDuration: '6s', animationDelay: '1s' }}></div>
       </div>
     </section>
   );
